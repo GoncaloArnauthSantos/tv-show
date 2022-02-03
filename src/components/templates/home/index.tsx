@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Search from '../../molecules/search';
 import { useStyles } from './index.styles';
 import ListContainer from '../../organisms/listContainer';
+import showThunk from '../../../store/duck/show/showThunk';
+import { useAppSelector } from '../../../store/state/hooks';
+import { selectSearchedList } from '../../../store/duck/show/showSelector';
 
 const Home = (): JSX.Element => {
   const classes = useStyles({});
+  const dispatch = useDispatch();
+
   const [input, setInput] = useState<string>('');
+  const searchedList = useAppSelector(selectSearchedList);
 
   useEffect(() => {
-    // TODO service for more recent or something like that
+    dispatch(showThunk.searchShowByName());
   }, []);
 
-  const onSearchInputSearch = () => {
-    // TODO call service with input
-    console.log(input);
+  const onSearchInputSearch = async () => {
+    dispatch(showThunk.searchShowByName(input));
   };
 
   return (
@@ -23,7 +29,7 @@ const Home = (): JSX.Element => {
           <Search input={input} handleChange={setInput} handleSearch={onSearchInputSearch} />
         </div>
         <div className={classes.listContainer}>
-          <ListContainer list={['cenas', 'cenas2']} />
+          <ListContainer list={searchedList} />
         </div>
       </div>
     </div>

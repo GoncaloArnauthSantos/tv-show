@@ -1,10 +1,12 @@
+import { IShow } from '../../../api/entities/IShow';
+
 interface IProps {
-  list: string[],
+  list: IShow[],
 }
 
-const ListContainer = ({ list = [] } : IProps): JSX.Element => (
+const ListContainer = ({ list = [] as IShow[] } : IProps): JSX.Element => (
   <ul>
-    {list.map((item = ''): JSX.Element => <div>cenas</div>)}
+    {list.map(({ id, name }): JSX.Element => <li key={id}>{name}</li>)}
   </ul>
 
 );
