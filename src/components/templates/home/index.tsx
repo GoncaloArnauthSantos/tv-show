@@ -23,15 +23,18 @@ const Home = (): JSX.Element => {
   };
 
   return (
-    <div className={classes.container}>
-      <div className={classes.content}>
-        <div className={classes.searchContainer}>
-          <Search input={input} handleChange={setInput} handleSearch={onSearchInputSearch} />
-        </div>
-        <div className={classes.listContainer}>
-          <ListContainer list={searchedList} />
-        </div>
+    <div className={classes.content}>
+      <div className={`${classes.searchContainer} ${searchedList.length ? classes.searchContainerAnimation : ''}`}>
+        <Search input={input} handleChange={setInput} handleSearch={onSearchInputSearch} />
       </div>
+      {
+          searchedList.length
+            ? (
+              <div className={classes.listContainer}>
+                <ListContainer list={searchedList} />
+              </div>
+            ) : null
+        }
     </div>
   );
 };
