@@ -8,9 +8,9 @@ export default class SearchService {
     return ShowMapper.mapISearchShowListDTOToIShowList(await ResponseHandler(res));
   }
 
-  static searchShowById = async (id = ''): Promise<IShow[]> => {
-    const res = await fetch(`https://api.tvmaze.com/shows?q=${id}`);
+  static searchShowById = async (id = ''): Promise<IShow> => {
+    const res = await fetch(`https://api.tvmaze.com/shows/${id}?embed=episodes`);
 
-    return ShowMapper.mapIShowListDTOToIShowList(await ResponseHandler(res));
+    return ShowMapper.mapIShowDTOToIShow(await ResponseHandler(res));
   }
 }

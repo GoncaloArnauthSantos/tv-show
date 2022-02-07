@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Search from '../../molecules/search';
 import { useStyles } from './index.styles';
 import ListContainer from '../../organisms/listContainer';
 import showThunk from '../../../store/duck/show/showThunk';
-import { useAppSelector } from '../../../store/state/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/state/hooks';
 import { selectSearchedList } from '../../../store/duck/show/showSelector';
 import Constants from '../../../utils/constants';
 
@@ -13,7 +12,7 @@ const { ROUTES: { SHOW_ROUTE = '' } } = Constants;
 
 const Home = (): JSX.Element => {
   const classes = useStyles({});
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [input, setInput] = useState<string>('');
