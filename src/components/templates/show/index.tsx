@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Detail = (): JSX.Element => {
+const Show = (): JSX.Element => {
   const a = 'cenas';
 
   return (
@@ -8,4 +8,4 @@ const Detail = (): JSX.Element => {
   );
 };
 
-export default Detail;
+export default Show;

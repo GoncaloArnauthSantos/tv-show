@@ -7,13 +7,13 @@ const defaultStyles = () => ({
   },
   searchContainer: {
     marginTop: '400px',
-    transform: 'scale(0.85)',
-    transition: 'all 1000ms',
+    transform: 'scale(1)',
+    transition: 'margin-top 1000ms',
   },
   searchContainerAnimation: {
     marginTop: '100px',
-    transform: 'scale(0.85)',
-    transition: 'all 1000ms',
+    transform: 'scale(1)',
+    transition: 'margin-top 1000ms',
   },
   listContainer: {
     display: 'flex',
