@@ -22,6 +22,10 @@ const Home = (): JSX.Element => {
     dispatch(showThunk.searchShowByName(input));
   };
 
+  const onShowClick = (id: number) => {
+
+  };
+
   return (
     <div className={classes.content}>
       <div className={`${classes.searchContainer} ${searchedList.length ? classes.searchContainerAnimation : ''}`}>
@@ -31,7 +35,7 @@ const Home = (): JSX.Element => {
           searchedList.length
             ? (
               <div className={classes.listContainer}>
-                <ListContainer list={searchedList} />
+                <ListContainer list={searchedList} handleItemClick={onShowClick} />
               </div>
             ) : null
         }
