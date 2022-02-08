@@ -2,20 +2,21 @@ import { IShow } from '../../../api/entities/IShow';
 import { useStyles } from './index.styles';
 import { IImage } from '../../../api/entities/IImage';
 import Image from '../../atoms/image';
+import { IEpisode } from '../../../api/entities/IEpisode';
 
 interface IProps {
-  show: IShow,
+  tile: IShow | IEpisode,
   handleClick: (id: number) => void,
 }
 
-const ShowTile = ({ show = {} as IShow, handleClick = () => {} }: IProps): JSX.Element => {
+const Tile = ({ tile = {} as IShow | IEpisode, handleClick = () => {} }: IProps): JSX.Element => {
   const classes = useStyles({});
 
   const {
     id,
     image = {} as IImage,
     name = '',
-  } = show;
+  } = tile;
 
   return (
     <li className={classes.container}>
@@ -31,4 +32,4 @@ const ShowTile = ({ show = {} as IShow, handleClick = () => {} }: IProps): JSX.E
   );
 };
 
-export default ShowTile;
+export default Tile;

@@ -8,9 +8,13 @@ export interface IShowDTO {
   status: string,
   summary: string,
   image: IImageDTO,
-  _embedded?: IEpisodeDTO[],
+  _embedded?: IEmbeddedDTO,
 }
 
 export interface ISearchShowDTO {
   show: IShowDTO
+}
+
+export interface IEmbeddedDTO {
+  episodes: IEpisodeDTO[];
 }

@@ -5,6 +5,10 @@ const defaultStyles = () => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  header: {},
+  backButton: {},
+  showInfoContainer: {},
+  episodesContainer: {},
 }) as const;
 
 const useStyles = makeStyles(() => createStyles(defaultStyles()));

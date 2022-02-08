@@ -1,8 +1,9 @@
 import { AppDispatch } from '../../state/store';
 import { hideLoading, setError, showLoading } from '../generic/genericSlice';
 import SearchService from '../../../api/services/SearchService';
-import { setSearchedList, setSelectedShow } from './showSlice';
+import { setEpisodeList, setSearchedList, setSelectedShow } from './showSlice';
 import { ErrorHandler } from '../../../api/ResponseHandler';
+import { IEpisode } from '../../../api/entities/IEpisode';
 
 const searchShowByName = (name = '') => async (dispatch: AppDispatch) => {
   dispatch(showLoading());
@@ -22,7 +23,10 @@ const searchShowById = (id = '') => async (dispatch: AppDispatch) => {
 
   try {
     const show = await SearchService.searchShowById(id);
-    dispatch(setSelectedShow(show));
+    const { episodes = [] as IEpisode[], ...currentShow } = show;
+
+    dispatch(setSelectedShow(currentShow));
+    dispatch(setEpisodeList(episodes));
   } catch (e) {
     const error = await ErrorHandler(e);
     dispatch(setError(error));

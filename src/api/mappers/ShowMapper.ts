@@ -3,7 +3,6 @@ import { ISearchShowDTO, IShowDTO } from '../dtos/IShowDTO';
 import ImageMapper from './ImageMapper';
 import EpisodeMapper from './EpisodeMapper';
 import { IImage } from '../entities/IImage';
-import { IEpisode } from '../entities/IEpisode';
 
 const mapIShowDTOToIShow = (shows: IShowDTO): IShow => {
   const {
@@ -23,7 +22,7 @@ const mapIShowDTOToIShow = (shows: IShowDTO): IShow => {
     status,
     description: summary,
     image: image ? ImageMapper.mapIImageDTOToIImage(image) : {} as IImage,
-    episodes: _embedded?.length ? EpisodeMapper.mapIEpisodeListDTOToIEpisodeList(_embedded) : [] as IEpisode[],
+    episodes: EpisodeMapper.mapIEpisodeListDTOToIEpisodeList(_embedded),
   };
 };
 

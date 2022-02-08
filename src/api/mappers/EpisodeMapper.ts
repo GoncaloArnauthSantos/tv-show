@@ -1,6 +1,7 @@
 import { IEpisode } from '../entities/IEpisode';
 import { IEpisodeDTO } from '../dtos/IEpisodeDTO';
 import ImageMapper from './ImageMapper';
+import { IEmbeddedDTO } from '../dtos/IShowDTO';
 
 const mapIEpisodeDTOToIEpisode = (episode: IEpisodeDTO): IEpisode => {
   const {
@@ -18,9 +19,8 @@ const mapIEpisodeDTOToIEpisode = (episode: IEpisodeDTO): IEpisode => {
   };
 };
 
-const mapIEpisodeListDTOToIEpisodeList = (shows = [] as IEpisodeDTO[]): IEpisode[] => (
-  shows.map(mapIEpisodeDTOToIEpisode)
-);
+const mapIEpisodeListDTOToIEpisodeList = ({ episodes = [] as IEpisodeDTO[] } = {} as IEmbeddedDTO): IEpisode[] => (
+  episodes.map(mapIEpisodeDTOToIEpisode));
 
 export default {
   mapIEpisodeDTOToIEpisode,

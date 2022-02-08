@@ -1,16 +1,22 @@
 import { IImageDTO } from '../dtos/IImageDTO';
 import { IImage } from '../entities/IImage';
 
-const mapIImageDTOToIImage = (image: IImageDTO): IImage => {
-  const {
-    medium = '',
-    original = '',
-  } = image;
+const defaultImage = (): IImage => ({ medium: '', original: '' });
 
-  return {
-    medium,
-    original,
-  };
+const mapIImageDTOToIImage = (image: IImageDTO | null): IImage => {
+  if (image) {
+    const {
+      medium = '',
+      original = '',
+    } = image;
+
+    return {
+      medium,
+      original,
+    };
+  }
+
+  return defaultImage();
 };
 
 export default {

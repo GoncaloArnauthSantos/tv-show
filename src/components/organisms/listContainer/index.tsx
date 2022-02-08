@@ -1,19 +1,20 @@
 import { IShow } from '../../../api/entities/IShow';
 import { useStyles } from './index.styles';
-import ShowTile from '../../molecules/showTile';
+import { IEpisode } from '../../../api/entities/IEpisode';
+import Tile from '../../molecules/tile';
 
 interface IProps {
-  list: IShow[],
+  list: IShow[] | IEpisode[],
   handleItemClick: (id: number) => void,
 }
 
-const ListContainer = ({ list = [] as IShow[], handleItemClick = () => {} } : IProps): JSX.Element => {
+const ListContainer = ({ list = [] as IShow[] | IEpisode[], handleItemClick = () => {} } : IProps): JSX.Element => {
   const classes = useStyles({});
 
   return (
     <ul className={classes.container}>
-      {list.map(({ id, ...show }): JSX.Element => (
-        <ShowTile key={id} show={{ id, ...show }} handleClick={handleItemClick} />
+      {list.map(({ id, ...tile }): JSX.Element => (
+        <Tile key={id} tile={{ id, ...tile }} handleClick={handleItemClick} />
       ))}
     </ul>
   );
